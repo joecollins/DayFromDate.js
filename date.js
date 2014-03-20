@@ -62,10 +62,12 @@
 				console.log("Year is missing");
 			}
 			
-		//Fix the century
+		var base = Math.floor(century/4)*4;
+		var dif = century - base;
+		var holder = [6,4,2,0];
+		century = holder[dif];
 			
-			
-		var datecalc =  Math.floor((day+month+year+(year/4)+6) % 7);
+		var datecalc =  Math.floor((day+month+year+(year/4)+century) % 7);
 		var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 		
 		return days[datecalc] ? days[datecalc]  : 'unknown';
