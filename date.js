@@ -1,10 +1,20 @@
 (function(){
 
 	var DayDate = function(date){
+
 	
-	this.myDate = function(day, month, year, century){
-		month = month.toLowerCase();
-		day = parseFloat(day);
+	this.myDate = function(entry){
+		var date = entry.split(" ");
+		var yandc = date[2];
+		
+		//c may break if the format is changed
+		var c = ""+ yandc[0] + "" +  yandc[1]; 
+		var y = ""+ yandc[2] + "" +  yandc[3]; 
+	
+		var month = date[1].toLowerCase();
+		var day = parseFloat(date[0]);
+		var century = c;
+		var year = y;
 		
 		//change the month value to work in the algorithm
 			if (month == "january" || month == "october") {
