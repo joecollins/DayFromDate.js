@@ -4,11 +4,13 @@
 
 	
 	this.myDate = function(entry){
+	/*if(entry.length < 0){
+		entry = 
+	}*/
 	
 		var format_one = new RegExp(/(([\d]){2}([\/]|[-]){1}(\d{2})([\/]|[-]{1})([00-99]){2})/i); // 01-02-03 (day/month/year shortform)
-		var format_two =new RegExp(/(([\d]){2}([\s]|[\/]|[-]){1}(([Jan]|[Feb]|[Mar]|[Apr]|[May]|[June]|[July]|[Aug]|[Sept]|[Oct]|[Nov]|[Dec]){3,4})([\s]|[\/]|[-]1})([0000-9999]){4})/i); // 12 Jan 2012
+		var format_two =new RegExp(/(([\d]){2}([\s]|[\/]|[-]){1}(([Jan]|[Feb]|[Mar]|[Apr]|[May]|[June]|[July]|[Aug]|[Sept]|[Oct]|[Nov]|[Dec]|[January]|[February]|[March]|[April]|[May]|[June]|[July]|[August]|[September]|[October]|[November]|[December]){3,9})([\s]|[\/]|[-]1})([0000-9999]){4})/i); // 12 Jan 2012
 		var format_three = new RegExp(/((([January]|[February]|[March]|[April]|[May]|){3,9})([\s]{1})([a-z1-9]{3,4})([\s]{1})([0000-9999]){4})/i); // March 12th 2012
-		//var format_four = new RegExp(/(((\d{1,2})([\/]|[-]){1}(\d{2})([\/]|[-]{1})(\d{2,4}))/i);   // 15/12/14 (day/month/year)
 
 		if(format_one.test(entry)){
 			//return "Format one" - This is  01-02-03 (day/month/year shortform)
@@ -46,24 +48,10 @@
 			var year = y;
 			
 		} 
-		/*else if(format_four.test(entry)){
-			return 'format four';
-		}*/ else {
+		else {
 			return 'invalid format';
 		}
 
-		
-	/*	var yandc = date[2];
-		
-		//c may break if the format is changed
-		var c = ""+ yandc[0] + "" +  yandc[1]; 
-		var y = ""+ yandc[2] + "" +  yandc[3]; 
-	
-		var month = date[1].toLowerCase();
-		var day = parseFloat(date[0]);
-		var century = c;
-		var year = y;
-		*/
 		//change the month value to work in the algorithm
 			if (month == "january" || month == "october" || month == "01" || month == "10" || month == "jan" || month == "oct") {
 				if(year % 4 == 0){
