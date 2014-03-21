@@ -1,9 +1,8 @@
 (function(){
 
 	var DayDate = function(date){
-
 	
-	this.myDate = function(entry){
+	this.get = function(entry){
 		if(entry == undefined){
 			entry = new Date();
 			var today = entry.getUTCDay();
@@ -30,7 +29,6 @@
 			}
 		}
 		else{
-		
 	
 	
 			var format_one = new RegExp(/(([\d]){2}([\/]|[-]){1}(\d{2})([\/]|[-]{1})([00-99]){2})/i); // 01-02-03 (day/month/year shortform)
