@@ -6,33 +6,15 @@
 		if(entry == undefined){
 			entry = new Date();
 			var today = entry.getUTCDay();
-			if (today == 0){
-				return ("Today is Sunday");
-			}		
-			else if (today == 1){
-				return("Today is Monday");
-			}				
-			else if (today == 2){
-				return("Today is Tuesday");
-			}				
-			else if (today == 3){
-				return("Today is Wednesday");
-			}				
-			else if (today == 4){
-				return("Today is Thursday");
-			}				
-			else if (today == 5){
-				return("Today is Friday");
-			}				
-			else if (today == 6){
-				return("Today is Saturday");
-			}
+			var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+		
+			return days[datecalc] ? days[datecalc]  : 'unknown';
 		}
 		else{
 	
 			var format_one = new RegExp(/(([\d]){2}([\/]|[-]){1}(\d{2})([\/]|[-]{1})([00-99]){2})/i); // 01-02-03 (day/month/year shortform)
 			var format_two =new RegExp(/(([\d]){2}([\s]|[\/]|[-]){1}(([Jan]|[Feb]|[Mar]|[Apr]|[May]|[June]|[July]|[Aug]|[Sept]|[Oct]|[Nov]|[Dec]|[January]|[February]|[March]|[April]|[May]|[June]|[July]|[August]|[September]|[October]|[November]|[December]){3,9})([\s]|[\/]|[-]1})([0000-9999]){4})/i); // 12 Jan 2012
-			var format_three = new RegExp(/((([January]|[February]|[March]|[April]|[May]|){3,9})([\s]{1})([a-z1-9]{3,4})([\s]{1})([0000-9999]){4})/i); // March 12th 2012
+			var format_three = new RegExp(/((([January]|[February]|[March]|[April]|[May]|[June]|[July]|[August]|[September]|[October]|[November]|[December]){3,9})([\s]{1})([a-z1-9]{3,4})([\s]{1})([0000-9999]){4})/i); // March 12th 2012
 
 			if(format_one.test(entry)){
 				//return "Format one" - This is  01-02-03 (day/month/year shortform)
@@ -71,7 +53,7 @@
 			
 			} 
 			else {
-				return 'invalid format';
+				return 'Invalid format';
 			}
 
 			//change the month value to work in the algorithm
@@ -100,7 +82,7 @@
 			} else if(month == "april" || month == "july" || month == "04" || month == "07" || month == "apr" || month == "july"){
 				month = 6
 			}else {
-				console.log("Month is missing");
+				console.log("Month is missing or invalid");
 			}	
 
 		//change the year value to work in the algorithm
@@ -127,7 +109,7 @@
 			} else if(six_years.indexOf(year)  >= 0){
 				year = 6;
 			} else {
-				console.log("Year is missing");
+				console.log("Year is missing or invalid");
 			}
 		var base = Math.floor(century/4)*4;
 		var dif = century - base;
